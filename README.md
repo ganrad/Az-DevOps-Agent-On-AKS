@@ -92,6 +92,10 @@
 
    ![alt tag](./images/C-01.png)
 
-   From the agent pool list, select the pool name which the agent is connected to.  Then click on the **Agents** tab and make sure the agent is online.  See screenshot below. 
+   From the agent pool list, select the pool name which the agent is connected to.
 
-   ![alt tag](./images/C-01.png)
+   ![alt tag](./images/C-02.png)
+
+   Click on the **Agents** tab and make sure the agent is online.  See screenshot below. 
+
+   ![alt tag](./images/C-03.png)
