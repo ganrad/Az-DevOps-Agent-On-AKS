@@ -92,7 +92,7 @@
 
    ![alt tag](./images/C-01.png)
 
-   From the agent pool list, select the pool name which the agent is connected to.
+   From the agent pool list, select the pool the agent is connected to.
 
    ![alt tag](./images/C-02.png)
 
