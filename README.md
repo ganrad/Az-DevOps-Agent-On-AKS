@@ -69,3 +69,29 @@
    $ az acr repository show-tags --name <acrName> --repository azdevopsagent -o table
    #
    ```
+
+### C] Test the Azure DevOps Pipeline Agent on a local VM
+1. Run the Azure DevOps Pipeline Agent
+   
+   ```
+   #
+   # Provide correct values for the following parameters
+   #
+   # AZP_URL = Azure DevOps URL eg., https://dev.azure.com/org
+   # AZP_TOKEN = Azure DevOps PAT Token
+   # AZP_AGENT_NAME = Any meaningful name for the container agent
+   # AZP_POOL = Name of the agent pool registered in Azure DevOps Services.  Default value is 'Default' pool
+   #
+   $ docker run -e AZP_URL="<Azure DevOps URL>" -e AZP_TOKEN="<Azure DevOps PAT Token>" -e AZP_AGENT_NAME="Az-DevOps-Agent" -e AZP_POOL="<Azure DevOps Agent Pool name>" azdevopsagent:latest
+   #
+   ```
+
+2. Verify the agent has registered with the correct pool in Azure DevOps Services
+
+   Login to Azure DevOps Services Portal with your credentials.  Click on **Organization Settings** and then click on **Agent pools**.  See screenshot below.
+
+   ![alt tag](./images/C-01.png)
+
+   From the agent pool list, select the pool name which the agent is connected to.  Then click on the **Agents** tab and make sure the agent is online.  See screenshot below. 
+
+   ![alt tag](./images/C-01.png)
