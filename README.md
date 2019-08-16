@@ -82,6 +82,9 @@
    # AZP_AGENT_NAME = Any meaningful name for the container agent
    # AZP_POOL = Name of the agent pool registered in Azure DevOps Services.  Default value is 'Default' pool
    #
+   # Use docker bind mount for running docker builds within the docker agent container! Add the '-v' option as below.
+   # -v /var/run/docker.sock:/var/run/docker.sock
+   #
    $ docker run -e AZP_URL="<Azure DevOps URL>" -e AZP_TOKEN="<Azure DevOps PAT Token>" -e AZP_AGENT_NAME="Az-DevOps-Agent" -e AZP_POOL="<Azure DevOps Agent Pool name>" azdevopsagent:latest
    #
    ```
