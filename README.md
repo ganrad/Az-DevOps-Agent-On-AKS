@@ -31,3 +31,41 @@
 
    ![alt tag](./images/A-07.PNG)
 
+### B] Build Azure DevOps Pipeline Agent and push it to Azure Container Registry (ACR)
+1. Refer to [Azure DevOps docs](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops) and follow the steps to copy the `Dockerfile` and `start.sh` scripts to a local VM with **docker** engine installed on it.  These files are also provided in the `./dockeragent` directory.
+
+2. Build the Azure DevOps Pipeline agent
+
+   ```
+   #
+   $ docker build -t azdevopsagent:latest .
+   #
+   # List the docker images
+   $ docker images
+   #
+   ```
+
+3. Push the Azure DevOps Pipeline Agent container image to ACR
+
+   ```
+   # NOTE: Substitute the correct value for ACR ('<acrName>') in the commands below
+   #
+   # Login to ACR with your credentials.
+   $ az acr login --name <acrName>
+   #
+   # Tag the Azure DevOps Pipeline image 
+   $ docker tag azdevopsagent:latest <acrName>.azurecr.io/azdevopsagent:v1
+   #
+   # List the docker images
+   $ docker images
+   #
+   # Push the image to ACR
+   $ docker push <acrName>.azurecr.io/azdevopsagent:v1
+   #
+   # List the images in the ACR repository
+   $ az acr repository list --name <acrName> -o table
+   #
+   # List the tags in the 'azdevopsagent' repository
+   $ az acr repository show-tags --name <acrName> --repository azdevopsagent -o table
+   #
+   ```
