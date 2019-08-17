@@ -1,4 +1,12 @@
+# Azure DevOps Pipeline Agent : 08-16-2019
+#
+# Description: This dockerfile authored by Microsoft has been modified to include the following build tools
+#   - docker-ce-cli
+#   - kubectl
+#   - helm
+#
 FROM ubuntu:16.04
+MAINTAINER Ganesh Radhakrishnan ganrad01@gmail.com
 
 # To make it easier for build and release pipelines to run apt-get,
 # configure apt to not require confirmation (assume the -y argument by default)
