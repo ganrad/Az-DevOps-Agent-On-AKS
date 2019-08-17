@@ -37,6 +37,8 @@
 2. Build the Azure DevOps Pipeline agent
 
    ```
+   # Change directory to './dockeragent'
+   $ cd ./dockeragent
    #
    # Build the Azure DevOps Pipeline Agent
    $ docker build -t azdevopsagent:latest .
