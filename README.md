@@ -38,6 +38,7 @@
 
    ```
    #
+   # Build the Azure DevOps Pipeline Agent
    $ docker build -t azdevopsagent:latest .
    #
    # List the docker images
