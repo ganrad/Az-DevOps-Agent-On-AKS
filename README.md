@@ -1,4 +1,4 @@
-# Build and deploy the Azure DevOps Pipeline Agent on AKS
+# Build and deploy Azure DevOps Pipeline Agent on AKS
 
 ### A] Create PAT token and Agent Pool in Azure DevOps Services
 1. Login to Azure DevOps Services portal with your credentials
