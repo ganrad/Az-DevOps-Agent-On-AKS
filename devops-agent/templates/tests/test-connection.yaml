@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "devops-agent.fullname" . }}-test-connection"
+  labels:
+{{ include "devops-agent.labels" . | indent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args:  ['{{ include "devops-agent.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
