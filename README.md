@@ -1,6 +1,25 @@
 # Build and deploy Azure DevOps Pipeline Agent on AKS
 
+### Description:
+This project details the steps for customizing the Azure DevOps Pipeline Agent and deploying the same on Azure Kubernetes Service.  AKS is a managed kubernetes service on Azure.
+
+### Prerequisites:
+1. A Linux VM with the following tools installed.
+   - Azure CLI
+   - Kubernetes CLI (kubectl)
+   - Docker engine
+   - Helm CLI (Kubernetes Package Manager)
+
+2. A Microsoft Azure Account and access to the Azure Portal
+
+3. An Azure DevOps Services account and access to the Azure DevOps Services Portal
+
+4. Access to a Azure Container Registry (ACR) instance
+
+5. Access to an Azure Kubernetes Cluster (AKS) instance.
+
 ### A] Create PAT token and Agent Pool in Azure DevOps Services
+
 1. Login to Azure DevOps Services portal with your credentials
 
 2. Create a *PAT* token
@@ -32,7 +51,12 @@
    ![alt tag](./images/A-07.PNG)
 
 ### B] Build Azure DevOps Pipeline Agent and push it to Azure Container Registry (ACR)
-1. Refer to [Azure DevOps docs](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops) and follow the steps to copy the `Dockerfile` and `start.sh` scripts to a local VM with **docker** engine installed on it.  These files are also provided in the `./dockeragent` directory.
+
+Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prerequisites* section) before proceeding with the next steps.
+
+1. Download (Copy) the Azure DevOps Pipeline Agent
+
+   Refer to [Azure DevOps docs](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops) and follow the steps to copy the `Dockerfile` and `start.sh` scripts to a local VM with **docker** engine installed on it.  These files are also provided in the `./dockeragent` directory.
 
 2. Build the Azure DevOps Pipeline agent
 
@@ -74,6 +98,7 @@
    ```
 
 ### C] Test the Azure DevOps Pipeline Agent on a local VM
+
 1. Run the Azure DevOps Pipeline Agent
    
    ```
@@ -105,3 +130,78 @@
    Click on the **Agents** tab and make sure the agent is online.  See screenshot below. 
 
    ![alt tag](./images/C-03.png)
+
+### D] Deploy Azure DevOps Pipeline Agent on AKS
+In this step *Helm*, a Kubernetes package manager will be used to deploy the Azure DevOps Pipeline agent on AKS.
+
+1. Update the following values in *Helm* chart file `./devops-agent/values.yaml`
+
+   | Parameter Name | Description |
+   |----------------|-------------|
+   | **azpUrl** | Azure DevOps URL eg., https://dev.azure.com/org-name |
+   | **azpToken** | Azure DevOps PAT Token (Created in Step A.2 |
+   | **azpAgentName** | A meaningful name assigned to the pipeline agent container (a String value) |
+   | **azpPool** | Name of the agent pool registered in Azure DevOps Services.  Defaults to 'Default' pool |
+
+2. Deploy the Azure DevOps Pipeline Agent on AKS
+
+   You must have `kubectl` and `helm` configured and connected to the AKS cluster.
+
+   ```
+   #
+   # Create a new namespace 'az-devops'
+   $ kubectl create namespace az-devops
+   #
+   # Deploy the Azure Pipeline Agent
+   $ helm install ./devops-agent/ --namespace az-devops -n az-devops
+   #
+   # List the helm application deployments
+   $ helm list
+   #
+   # List the Pods in 'az-devops' namespace
+   $ kubectl get pods -n az-devops
+   #
+   # View the agent container logs
+   $ kubectl logs <Pod-Name> -n az-devops
+   1. Determining matching Azure Pipelines agent...
+   2. Downloading and installing Azure Pipelines agent...
+   3. Configuring Azure Pipelines agent...
+
+   >> End User License Agreements:
+
+   Building sources from a TFVC repository requires accepting the Team Explorer Everywhere End User License Agreement. This step is not required for building sources from Git repositories.
+
+   A copy of the Team Explorer Everywhere license agreement can be found at:
+     /azp/agent/externals/tee/license.html
+
+
+   >> Connect:
+
+   Connecting to server ...
+
+   >> Register Agent:
+
+   Scanning for tool capabilities.
+   Connecting to the server.
+   Successfully replaced the agent
+   Testing agent connection.
+   2019-08-18 01:29:29Z: Settings Saved.
+   4. Running Azure Pipelines agent...
+   Starting Agent listener interactively
+   Started listener process
+   Started running service
+   Scanning for tool capabilities.
+   Connecting to the server.
+   2019-08-18 01:29:32Z: Listening for Jobs
+   #
+
+   ```
+3. Verify the agent has registered with the correct pool in Azure DevOps Services
+
+   Refer to Step C.2 (above).
+   
+### Summary
+To recap, this project detailed the steps for customizing the *Azure DevOps Pipeline Agent* (use a custom Dockerfile), building and testing the agent locally on a Linux VM and then deploying the agent container on AKS.
+By running multiple Azure DevOps Pipeline agent instances (containers) on AKS, multiple build jobs can be run concurrently in parallel and an organization's application build infrastructure can be elastically scaled. 
+
+The END.
