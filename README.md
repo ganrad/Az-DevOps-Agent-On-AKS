@@ -139,7 +139,7 @@ In this step *Helm*, a Kubernetes package manager will be used to deploy the Azu
    | Parameter Name | Description |
    |----------------|-------------|
    | **repository** | ACR Name eg., **acrname**.azurecr.io/azdevopsagent |
-   | **tag** | Azure DevOps Pipeline Agent Container tag name |
+   | **tag** | Azure DevOps Pipeline Agent Container image tag name |
    | **azpUrl** | Azure DevOps URL eg., https://dev.azure.com/org-name |
    | **azpToken** | Azure DevOps PAT Token (Created in Step A.2 |
    | **azpAgentName** | A meaningful name assigned to the pipeline agent container (a String value) |
