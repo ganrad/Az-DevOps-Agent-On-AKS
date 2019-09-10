@@ -57,6 +57,7 @@ Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prere
 1. Download (Copy) the Azure DevOps Pipeline Agent
 
    Refer to [Azure DevOps docs](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops) and follow the steps to copy the `Dockerfile` and `start.sh` scripts to a local VM with **docker** engine installed on it.
+
    The files are also provided in the `./dockeragent` directory. You will need to fork this repository in order to use the provided scripts to build the Azure Pipeline Agent.
 
 2. Build the Azure DevOps Pipeline agent
