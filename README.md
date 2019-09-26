@@ -56,7 +56,9 @@ Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prere
 
 1. Download (Copy) the Azure DevOps Pipeline Agent
 
-   Refer to [Azure DevOps docs](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops) and follow the steps to copy the `Dockerfile` and `start.sh` scripts to a local VM with **docker** engine installed on it.  These files are also provided in the `./dockeragent` directory.
+   Refer to [Azure DevOps docs](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops) and follow the steps to copy the `Dockerfile` and `start.sh` scripts to a local VM with **docker** engine installed on it.
+
+   The files are also provided in the `./dockeragent` directory. You will need to fork this repository in order to use the provided scripts to build the Azure Pipeline Agent.
 
 2. Build the Azure DevOps Pipeline agent
 
@@ -138,8 +140,10 @@ In this step *Helm*, a Kubernetes package manager will be used to deploy the Azu
 
    | Parameter Name | Description |
    |----------------|-------------|
+   | **repository** | ACR Name eg., **acrname**.azurecr.io/azdevopsagent |
+   | **tag** | Azure DevOps Pipeline Agent Container image tag name |
    | **azpUrl** | Azure DevOps URL eg., https://dev.azure.com/org-name |
-   | **azpToken** | Azure DevOps PAT Token (Created in Step A.2 |
+   | **azpToken** | Azure DevOps PAT Token (Created in Step A.2) |
    | **azpAgentName** | A meaningful name assigned to the pipeline agent container (a String value) |
    | **azpPool** | Name of the agent pool registered in Azure DevOps Services.  Defaults to 'Default' pool |
 

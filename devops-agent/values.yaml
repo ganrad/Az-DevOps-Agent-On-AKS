@@ -5,8 +5,8 @@
 replicaCount: 2
 
 image:
-  repository: akshackacrgr.azurecr.io/azdevopsagent
-  tag: v1
+  repository: <ACR Name>.azurecr.io/azdevopsagent
+  tag: <Image Tag name>
   pullPolicy: Always
 
 imagePullSecrets: []
