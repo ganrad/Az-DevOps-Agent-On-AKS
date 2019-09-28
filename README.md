@@ -58,11 +58,17 @@ Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prere
 
    Refer to [Azure DevOps docs](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops) and follow the steps to copy the `Dockerfile` and `start.sh` scripts to a local VM with **docker** engine installed on it.
 
-   The files are also provided in the `./dockeragent` directory. You will need to fork this repository in order to use the provided scripts to build the Azure Pipeline Agent.
+   The files are also provided in the `./dockeragent` directory. You will need to clone/fork this repository in order to use the provided scripts to build the Azure Pipeline Agent.
+   The provided `Dockerfile` installs the following tools.
+   - Azure CLI
+   - Docker CE client (latest)
+   - Kubectl (v1.15.x)
+   - Helm (v2.14.3)
+   - Aqua Trivy Container image scanner (latest)
 
 2. Build the Azure DevOps Pipeline agent
 
-   ```
+   ```bash
    # Change directory to './dockeragent'
    $ cd ./dockeragent
    #
@@ -76,7 +82,7 @@ Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prere
 
 3. Push the Azure DevOps Pipeline Agent container image to ACR
 
-   ```
+   ```bash
    # NOTE: Substitute the correct value for ACR ('<acrName>') in the commands below
    #
    # Login to ACR with your credentials.
@@ -101,9 +107,11 @@ Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prere
 
 ### C] Test the Azure DevOps Pipeline Agent on a local VM
 
-1. Run the Azure DevOps Pipeline Agent
+1. Login to the Linux VM via a terminal session.
+
+2. Run the Azure DevOps Pipeline Agent
    
-   ```
+   ```bash
    #
    # Provide correct values for the following parameters
    #
@@ -119,7 +127,7 @@ Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prere
    #
    ```
 
-2. Verify the agent has registered with the correct pool in Azure DevOps Services
+3. Verify the agent has registered with the correct pool in Azure DevOps Services
 
    Login to Azure DevOps Services Portal with your credentials.  Click on **Organization Settings** and then click on **Agent pools**.  See screenshot below.
 
@@ -149,9 +157,9 @@ In this step *Helm*, a Kubernetes package manager will be used to deploy the Azu
 
 2. Deploy the Azure DevOps Pipeline Agent on AKS
 
-   You must have `kubectl` and `helm` configured and connected to the AKS cluster.
+   If you haven't already, login to the Linux VM via a terminal session.  You must have `kubectl` and `helm` configured and connected to the AKS cluster.
 
-   ```
+   ```bash
    #
    # Create a new namespace 'az-devops'
    $ kubectl create namespace az-devops
@@ -165,7 +173,7 @@ In this step *Helm*, a Kubernetes package manager will be used to deploy the Azu
    # List the Pods in 'az-devops' namespace
    $ kubectl get pods -n az-devops
    #
-   # View the agent container logs
+   # View the agent container logs.  Substitute the Pod name in the command below.
    $ kubectl logs <Pod-Name> -n az-devops
    1. Determining matching Azure Pipelines agent...
    2. Downloading and installing Azure Pipelines agent...
