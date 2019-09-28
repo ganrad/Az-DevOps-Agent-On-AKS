@@ -25,6 +25,10 @@ spec:
           hostPath:
             path: /var/run/docker.sock
             type: File
+        - name: trivy-cache
+          hostPath:
+            path: $HOME/Library/Caches
+            type: DirectoryOrCreate
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -41,6 +45,8 @@ spec:
           volumeMounts:
           - name: docker-socket-volume
             mountPath: /var/run/docker.sock
+          - name: trivy-cache
+            mountPath: /root/.cache
           securityContext:
             privileged: true
           resources:
