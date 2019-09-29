@@ -27,7 +27,7 @@ spec:
             type: File
         - name: trivy-cache
           hostPath:
-            path: $HOME/Library/Caches
+            path: /var/trivy/Library/Caches
             type: DirectoryOrCreate
       containers:
         - name: {{ .Chart.Name }}
