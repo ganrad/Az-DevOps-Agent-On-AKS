@@ -60,10 +60,10 @@ Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prere
 
    The files are also provided in the `./dockeragent` directory. You will need to clone/fork this repository in order to use the provided scripts to build the Azure Pipeline Agent.
    The provided `Dockerfile` installs the following tools.
-   - Azure CLI (latest version)
-   - Docker CE client (latest version)
-   - Kubectl (v1.15.x)
-   - Helm (v2.14.3)
+   - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (latest version)
+   - [Docker CE Client](https://docs.docker.com/install/) (latest version)
+   - [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (v1.15.x)
+   - [Helm](https://helm.sh/) (v2.14.3)
    - [Aqua Trivy](https://github.com/aquasecurity/trivy) Container image scanner (latest version)
 
 2. Build the Azure DevOps Pipeline agent
