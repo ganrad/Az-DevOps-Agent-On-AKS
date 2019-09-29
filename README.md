@@ -64,7 +64,7 @@ Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prere
    - Docker CE client (latest version)
    - Kubectl (v1.15.x)
    - Helm (v2.14.3)
-   - Aqua Trivy Container image scanner (latest version)
+   - [Aqua Trivy](https://github.com/aquasecurity/trivy) Container image scanner (latest version)
 
 2. Build the Azure DevOps Pipeline agent
 
