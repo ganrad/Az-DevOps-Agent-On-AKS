@@ -60,11 +60,11 @@ Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prere
 
    The files are also provided in the `./dockeragent` directory. You will need to clone/fork this repository in order to use the provided scripts to build the Azure Pipeline Agent.
    The provided `Dockerfile` installs the following tools.
-   - Azure CLI
-   - Docker CE client (latest)
+   - Azure CLI (latest version)
+   - Docker CE client (latest version)
    - Kubectl (v1.15.x)
    - Helm (v2.14.3)
-   - Aqua Trivy Container image scanner (latest)
+   - Aqua Trivy Container image scanner (latest version)
 
 2. Build the Azure DevOps Pipeline agent
 
@@ -157,7 +157,7 @@ In this step *Helm*, a Kubernetes package manager will be used to deploy the Azu
 
 2. Deploy the Azure DevOps Pipeline Agent on AKS
 
-   If you haven't already, login to the Linux VM via a terminal session.  You must have `kubectl` and `helm` configured and connected to the AKS cluster.
+   Login to the Linux VM via a terminal session (in case you haven't already).  You must have `kubectl` and `helm` configured and connected to the AKS cluster.
 
    ```bash
    #
