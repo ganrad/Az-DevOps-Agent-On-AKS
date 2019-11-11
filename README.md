@@ -62,8 +62,8 @@ Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prere
    The provided `Dockerfile` installs the following tools.
    - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (latest version)
    - [Docker CE Client](https://docs.docker.com/install/) (latest version)
-   - [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (v1.15.x)
-   - [Helm](https://helm.sh/) (v2.14.3)
+   - [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (v1.16.2)
+   - [Helm](https://helm.sh/) (v2.16.0)
    - [Aqua Trivy](https://github.com/aquasecurity/trivy) Container image scanner (latest version)
 
 2. Build the Azure DevOps Pipeline agent
