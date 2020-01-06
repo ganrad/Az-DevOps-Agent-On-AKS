@@ -23,6 +23,7 @@ This project details the steps for customizing the Azure DevOps Pipeline Agent a
 1. Login to Azure DevOps Services portal with your credentials
 
 2. Create a *PAT* token
+
    Click on your profile name (top right corner) and then click on **Security**.  Click on **+ New Token**. See screenshot below.
 
    ![alt tag](./images/A-01.PNG)
@@ -36,11 +37,12 @@ This project details the steps for customizing the Azure DevOps Pipeline Agent a
    ![alt tag](./images/A-03.PNG)
 
 2. Create an *Agent Pool*
+
    Open up the Azure DevOps organization tab and then click on **Organization settings** (lower left corner).  See screenshot below.   
 
    ![alt tag](./images/A-04.PNG)
 
-   Then click on **Agent pools* as shown in the screenshot below.
+   Then click on **Agent pools** as shown in the screenshot below.
 
    ![alt tag](./images/A-05.PNG)
 
@@ -142,7 +144,7 @@ Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prere
    ![alt tag](./images/C-03.png)
 
 ### D] Deploy Azure DevOps Pipeline Agent on AKS
-In this step *Helm*, a Kubernetes package manager will be used to deploy the Azure DevOps Pipeline agent on AKS.
+In this step, the Kubernetes package manager *Helm* will be used to deploy the Azure DevOps Pipeline agent on AKS.
 
 1. Update the following values in *Helm* chart file `./devops-agent/values.yaml`
 
