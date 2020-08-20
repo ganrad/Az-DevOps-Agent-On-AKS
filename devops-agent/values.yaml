@@ -14,7 +14,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 azdevops:
-  azpUrl: "https://dev.azure.com/org-name"
+  azpUrl: "https://nlsnconnect-crm.visualstudio.com/"
   azpToken: "<Azure DevOps PAT Token"
   azpPool: "AKS-Agents"
   azpAgentName: "AKS-Agent"
