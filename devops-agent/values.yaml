@@ -5,18 +5,18 @@
 replicaCount: 1
 
 image:
-  repository: <ACR Name>.azurecr.io/azdevopsagent
-  tag: <Image Tag name>
-  pullPolicy: Always
+  repository: <xyz.azurecr.io/repo>
+  tag: <tag>
+  pullPolicy: IfNotPresent
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
 azdevops:
-  azpUrl: "https://dev.azure.com/org-name"
-  azpToken: "<Azure DevOps PAT Token"
-  azpPool: "AKS-Agent-Pool"
+  azpUrl: "https://<INSERT YOUR ORG>.visualstudio.com/"
+  azpToken: "<Azure DevOps PAT Token>"
+  azpPool: "AKS-Agents"
   azpAgentName: "AKS-Agent"
 
 service:
