@@ -3,14 +3,6 @@
 ### Description:
 This project details the steps for customizing the Azure DevOps Pipeline Agent and deploying the same on Azure Kubernetes Service.  AKS is a managed kubernetes service on Azure.
 
-### Contributors:
-Many thanks to the following people for their inputs, suggestions, code contributions and feedback.
-
-   | Name | Contribution | Description |
-   |------| ------------ | ----------- |
-   | Noel Austin | code | PR #3 |
-   | Krupakarreddin | bug | Issue #2 |
-
 ### Prerequisites:
 1. A Linux VM with the following tools installed.
    - Azure CLI
