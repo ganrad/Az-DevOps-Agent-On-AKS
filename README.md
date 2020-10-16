@@ -1,6 +1,6 @@
 # Build and deploy Azure DevOps Pipeline Agent on AKS
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ### Description:
@@ -237,6 +237,7 @@ Thanks to these wonderful people ([emoji key](https://allcontributors.org/docs/e
 <table>
   <tr>
     <td align="center"><a href="https://github.com/naustin"><img src="https://avatars0.githubusercontent.com/u/1503072?v=4" width="100px;" alt=""/><br /><sub><b>Noel Austin</b></sub></a><br /><a href="https://github.com/ganrad/Az-DevOps-Agent-On-AKS/commits?author=naustin" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Krupakarreddin"><img src="https://avatars0.githubusercontent.com/u/15169411?v=4" width="100px;" alt=""/><br /><sub><b>Krupakarreddin</b></sub></a><br /><a href="https://github.com/ganrad/Az-DevOps-Agent-On-AKS/issues?q=author%3AKrupakarreddin" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
