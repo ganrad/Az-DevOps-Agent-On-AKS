@@ -40,7 +40,9 @@ spec:
           - name: AZP_POOL
             value: "{{ .Values.azdevops.azpPool }}"
           - name: AZP_AGENT_NAME
-            value: "{{ .Values.azdevops.azpAgentName }}"
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
           - name: docker-socket-volume

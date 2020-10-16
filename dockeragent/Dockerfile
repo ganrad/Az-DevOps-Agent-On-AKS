@@ -7,7 +7,10 @@
 #   - kubectl
 #   - helm
 #
-FROM ubuntu:16.04
+# NOTES:
+# ganrad01: ID10092020 : Use base image Ubuntu:18.04, libcurl4 and Helm v3
+#
+FROM ubuntu:18.04
 MAINTAINER Ganesh Radhakrishnan ganrad01@gmail.com
 
 # To make it easier for build and release pipelines to run apt-get,
@@ -22,8 +25,9 @@ RUN apt-get update \
         jq \
         git \
         iputils-ping \
-        libcurl3 \
-        libicu55 \
+	libcurl4 \
+        # libcurl3 \
+        # libicu55 \
         libunwind8 \
         netcat \
         zip \
@@ -32,7 +36,8 @@ RUN apt-get update \
         apt-transport-https \
 	gnupg \
         gnupg-agent \
-        software-properties-common
+        software-properties-common \
+        apt-utils
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
@@ -54,15 +59,20 @@ WORKDIR /build-tools
 # Install Azure CLI - ID09262019
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
-# Install kubectl v1.16.x (latest)
+# Install kubectl (latest)
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl \
 && chmod +x ./kubectl \
 && mv ./kubectl /usr/local/bin/kubectl
 
-# Install helm v2.16.0 (latest)
-RUN wget https://get.helm.sh/helm-v2.16.0-linux-amd64.tar.gz \
-&& tar -zxvf helm-v2.16.0-linux-amd64.tar.gz \
-&& mv ./linux-amd64/helm /usr/local/bin/helm
+# Install helm v2 (latest)
+# RUN wget https://get.helm.sh/helm-v2.16.0-linux-amd64.tar.gz \
+# && tar -zxvf helm-v2.16.0-linux-amd64.tar.gz \
+# && mv ./linux-amd64/helm /usr/local/bin/helm
+
+# Install helm v3 (latest)
+RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
+&& chmod 700 get_helm.sh \
+&& ./get_helm.sh
 
 WORKDIR /azp
 

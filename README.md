@@ -8,7 +8,7 @@ This project details the steps for customizing the Azure DevOps Pipeline Agent a
    - Azure CLI
    - Kubernetes CLI (kubectl)
    - Docker engine
-   - Helm CLI (Kubernetes Package Manager)
+   - Helm CLI v2/v3 (Kubernetes Package Manager)
 
 2. A Microsoft Azure Account and access to the Azure Portal
 
@@ -61,12 +61,12 @@ Login to the Linux VM (via SSH) containing the CLI tools (outlined in the *Prere
    Refer to [Azure DevOps docs](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops) and follow the steps to copy the `Dockerfile` and `start.sh` scripts to a local VM with **docker** engine installed on it.
 
    The files are also provided in the `./dockeragent` directory. You will need to clone/fork this repository in order to use the provided scripts to build the Azure Pipeline Agent.
-   The provided `Dockerfile` installs the following tools.
-   - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (latest version)
-   - [Docker CE Client](https://docs.docker.com/install/) (latest version)
-   - [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (v1.16.2)
-   - [Helm](https://helm.sh/) (v2.16.0)
-   - [Aqua Trivy](https://github.com/aquasecurity/trivy) Container image scanner (latest version)
+   The provided `Dockerfile` installs **latest** versions of the following tools.
+   - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)
+   - [Docker CE Client](https://docs.docker.com/install/)
+   - [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+   - [Helm](https://helm.sh/)
+   - [Aqua Trivy](https://github.com/aquasecurity/trivy) Container image scanner
 
 2. Build the Azure DevOps Pipeline agent
 
@@ -150,11 +150,11 @@ In this step, the Kubernetes package manager *Helm* will be used to deploy the A
 
    | Parameter Name | Description |
    |----------------|-------------|
+   | **replicaCount** | No. of agent instances eg., 1..N |
    | **repository** | ACR Name eg., **acrname**.azurecr.io/azdevopsagent |
    | **tag** | Azure DevOps Pipeline Agent Container image tag name |
    | **azpUrl** | Azure DevOps URL eg., https://dev.azure.com/org-name |
    | **azpToken** | Azure DevOps PAT Token (Created in Step A.2) |
-   | **azpAgentName** | A meaningful name assigned to the pipeline agent container (a String value) |
    | **azpPool** | Name of the agent pool registered in Azure DevOps Services.  Defaults to 'Default' pool |
 
 2. Deploy the Azure DevOps Pipeline Agent on AKS
@@ -166,8 +166,12 @@ In this step, the Kubernetes package manager *Helm* will be used to deploy the A
    # Create a new namespace 'az-devops'
    $ kubectl create namespace az-devops
    #
-   # Deploy the Azure Pipeline Agent
-   $ helm install ./devops-agent/ --namespace az-devops -n az-devops
+   # Deploy the Azure Pipeline Agent.
+   # If you are using Helm v3.x for deploying the pipeline agent then use the command below.
+   $ helm install --namespace az-devops az-devops ./devops-agent/
+   #
+   # If you are using Helm v2.x for deploying the pipeline agent then use the command below.
+   # helm install ./devops-agent/ --namespace az-devops -n az-devops
    #
    # List the helm application deployments
    $ helm list
