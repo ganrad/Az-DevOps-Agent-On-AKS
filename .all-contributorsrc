@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "naustin",
+      "name": "Noel Austin",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1503072?v=4",
+      "profile": "https://github.com/naustin",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Az-DevOps-Agent-On-AKS",
+  "projectOwner": "ganrad",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
