@@ -225,8 +225,6 @@ In this step, the Kubernetes package manager *Helm* will be used to deploy the A
 To recap, this project detailed the steps for customizing the *Azure DevOps Pipeline Agent* (use a custom Dockerfile), building and testing the agent locally on a Linux VM and then deploying the agent container on AKS.
 By running multiple Azure DevOps Pipeline agent instances (containers) on AKS, multiple build jobs can be run concurrently in parallel and an organization's application build infrastructure can be elastically scaled. 
 
-The END.
-
 ## Contributors ✨
 
 Thanks to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)) for their contributions:
