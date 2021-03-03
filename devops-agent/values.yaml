@@ -9,6 +9,11 @@ image:
   tag: <Image Tag name>
   pullPolicy: Always
 
+docker:
+  image:
+    repository: docker
+    tag: 20.10.4-dind
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""

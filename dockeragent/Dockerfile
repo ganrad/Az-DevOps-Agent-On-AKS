@@ -9,6 +9,7 @@
 #
 # NOTES:
 # ganrad01: ID10092020 : Use base image Ubuntu:18.04, libcurl4 and Helm v3
+# ganrad01: ID02242021 : libicu60 is a dependency for .NET Core 3.1
 #
 FROM ubuntu:18.04
 MAINTAINER Ganesh Radhakrishnan ganrad01@gmail.com
@@ -18,8 +19,13 @@ MAINTAINER Ganesh Radhakrishnan ganrad01@gmail.com
 ENV DEBIAN_FRONTEND=noninteractive
 RUN echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes
 
-RUN apt-get update \
-&& apt-get install -y --no-install-recommends \
+# ID02242021.sn
+RUN apt-get update
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+# ID02242021.en
+
+RUN apt-get install -y --no-install-recommends \
         ca-certificates \
         curl \
         jq \
@@ -28,6 +34,7 @@ RUN apt-get update \
 	libcurl4 \
         # libcurl3 \
         # libicu55 \
+        libicu60 \
         libunwind8 \
         netcat \
         zip \
@@ -36,7 +43,7 @@ RUN apt-get update \
         apt-transport-https \
 	gnupg \
         gnupg-agent \
-        software-properties-common \
+        # software-properties-common \
         apt-utils
 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
