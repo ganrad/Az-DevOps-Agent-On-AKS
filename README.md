@@ -171,7 +171,7 @@ In this step, the Kubernetes package manager *Helm* will be used to deploy the A
    #
    # Deploy the Azure Pipeline Agent.
    # If you are using Helm v3.x for deploying the pipeline agent then use the command below.
-   $ helm install --namespace az-devops az-devops ./devops-agent/
+   $ helm install ado-agent ./devops-agent/ --namespace az-devops
    #
    # If you are using Helm v2.x for deploying the pipeline agent then use the command below.
    # helm install ./devops-agent/ --namespace az-devops -n az-devops
