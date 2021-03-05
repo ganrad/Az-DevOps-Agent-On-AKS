@@ -11,7 +11,7 @@ This project details the steps for customizing the Azure DevOps Pipeline Agent a
    - Azure CLI
    - Kubernetes CLI (kubectl)
    - Docker engine
-   - Helm CLI v2/v3 (Kubernetes Package Manager)
+   - Helm CLI v3 (Kubernetes Package Manager)
 
 2. A Microsoft Azure Account and access to the Azure Portal
 
@@ -176,8 +176,8 @@ In this step, the Kubernetes package manager *Helm* will be used to deploy the A
    # If you are using Helm v2.x for deploying the pipeline agent then use the command below.
    # helm install ./devops-agent/ --namespace az-devops -n az-devops
    #
-   # List the helm application deployments
-   $ helm list
+   # List the helm application deployments (releases) in 'az-devops' namespace
+   $ helm list -n az-devops
    #
    # List the Pods in 'az-devops' namespace
    $ kubectl get pods -n az-devops
