@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "devops-agent.fullname" . }}
   labels:
@@ -20,13 +20,6 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      volumes:
-        - name: dind-storage
-          emptyDir: {}
-        - name: trivy-cache
-          hostPath:
-            path: /var/trivy/Library/Caches
-            type: DirectoryOrCreate
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -77,3 +70,19 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
+      volumes:
+        - name: trivy-cache
+          hostPath:
+            path: /var/trivy/Library/Caches
+            type: DirectoryOrCreate
+  volumeClaimTemplates:
+  - metadata:
+      name: dind-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: {{ .Values.persistence.size }}
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Delete
+    whenScaled: Delete
